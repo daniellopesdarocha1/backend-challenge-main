@@ -26,10 +26,16 @@ public class TokenServiceImpl implements TokenService {
 		
 		ClaimDto claimDto = new ClaimDto();
 		
-		Gson gson = new Gson();
-		claimDto = gson.fromJson(payload, ClaimDto.class);
-		
-		return claimDto;
+		try {
+			Gson gson = new Gson();
+			claimDto = gson.fromJson(payload, ClaimDto.class);
+			
+			return claimDto;
+			
+		} catch (Exception e) {
+			System.out.println("JWT inválido");
+			return claimDto;
+		}
 	}
 	
 	
