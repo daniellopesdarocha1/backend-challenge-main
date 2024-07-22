@@ -2,12 +2,8 @@ package com.tokenvalidator.app.services.impl;
 
 import java.util.Base64;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.tokenvalidator.app.dtos.ClaimDto;
 import com.tokenvalidator.app.services.TokenService;
