@@ -1,6 +1,6 @@
 package com.tokenvalidator.app.services;
 
-public interface ValidaSeedService {
+public interface ValidaClaimSeedService {
 	
 	public boolean validaNumeroPrimo(String seed);
 	

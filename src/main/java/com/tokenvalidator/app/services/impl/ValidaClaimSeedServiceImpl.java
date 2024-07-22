@@ -1,8 +1,8 @@
 package com.tokenvalidator.app.services.impl;
 
-import com.tokenvalidator.app.services.ValidaSeedService;
+import com.tokenvalidator.app.services.ValidaClaimSeedService;
 
-public class ValidaSeedServiceImpl implements ValidaSeedService {
+public class ValidaClaimSeedServiceImpl implements ValidaClaimSeedService {
 
 	@Override
 	public boolean validaNumeroPrimo(String seed) {

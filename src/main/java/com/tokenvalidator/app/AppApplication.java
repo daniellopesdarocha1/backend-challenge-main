@@ -8,11 +8,11 @@ import com.tokenvalidator.app.dtos.ClaimDto;
 import com.tokenvalidator.app.services.TokenService;
 import com.tokenvalidator.app.services.ValidaClaimNameService;
 import com.tokenvalidator.app.services.ValidaClaimRoleService;
-import com.tokenvalidator.app.services.ValidaSeedService;
+import com.tokenvalidator.app.services.ValidaClaimSeedService;
 import com.tokenvalidator.app.services.impl.TokenServiceImpl;
 import com.tokenvalidator.app.services.impl.ValidaClaimNameServiceImpl;
 import com.tokenvalidator.app.services.impl.ValidaClaimRoleServiceImpl;
-import com.tokenvalidator.app.services.impl.ValidaSeedServiceImpl;
+import com.tokenvalidator.app.services.impl.ValidaClaimSeedServiceImpl;
 
 @SpringBootApplication
 public class AppApplication implements CommandLineRunner {
@@ -26,7 +26,7 @@ public class AppApplication implements CommandLineRunner {
 		TokenService tokenService = new TokenServiceImpl();
 		ClaimDto claimDto = new ClaimDto();
 		ValidaClaimNameService validaClaimNameService = new ValidaClaimNameServiceImpl();
-		ValidaSeedService validaSeedService = new ValidaSeedServiceImpl();
+		ValidaClaimSeedService validaSeedService = new ValidaClaimSeedServiceImpl();
 		ValidaClaimRoleService validaClaimRoleService = new ValidaClaimRoleServiceImpl();
 		
 		
