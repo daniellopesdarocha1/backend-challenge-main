@@ -9,7 +9,7 @@ import com.tokenvalidator.app.model.Token;
 public class TokenController {
 
 	@PostMapping(value="/validate")
-	public String validate( @RequestBody Token token) {
+	public boolean validate( @RequestBody Token token) {
 
 		// altere esse metodo para atender as regras de definidas no readme.
 		// você pode modificar o tipo de retorno, importar outros pacotes, criar mais classes.
@@ -18,7 +18,7 @@ public class TokenController {
 		// Imprimindo o input recebido
 		//System.out.println(token.getValue());
 
-		return "false";
+		return false;
 	}
 }
 
