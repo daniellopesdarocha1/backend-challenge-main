@@ -1,7 +1,10 @@
 package com.tokenvalidator.app.services.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.tokenvalidator.app.services.ValidaClaimSeedService;
 
+@Service
 public class ValidaClaimSeedServiceImpl implements ValidaClaimSeedService {
 
 	@Override

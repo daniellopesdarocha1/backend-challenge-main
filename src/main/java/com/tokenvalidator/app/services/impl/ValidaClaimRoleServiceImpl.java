@@ -1,8 +1,11 @@
 package com.tokenvalidator.app.services.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.tokenvalidator.app.enums.RoleEnum;
 import com.tokenvalidator.app.services.ValidaClaimRoleService;
 
+@Service
 public class ValidaClaimRoleServiceImpl implements ValidaClaimRoleService {
 
 	@Override

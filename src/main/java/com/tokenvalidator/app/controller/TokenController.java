@@ -1,14 +1,11 @@
 package com.tokenvalidator.app.controller;
-import org.springframework.web.bind.annotation.RequestBody ;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody ;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tokenvalidator.app.dtos.ClaimDto;
 import com.tokenvalidator.app.model.Token;
-import com.tokenvalidator.app.services.TokenService;
-import com.tokenvalidator.app.services.ValidaClaimNameService;
-import com.tokenvalidator.app.services.ValidaClaimRoleService;
-import com.tokenvalidator.app.services.ValidaClaimSeedService;
 import com.tokenvalidator.app.services.impl.TokenServiceImpl;
 import com.tokenvalidator.app.services.impl.ValidaClaimNameServiceImpl;
 import com.tokenvalidator.app.services.impl.ValidaClaimRoleServiceImpl;
@@ -17,14 +14,20 @@ import com.tokenvalidator.app.services.impl.ValidaClaimSeedServiceImpl;
 @RestController
 public class TokenController {
 
+	@Autowired
+	TokenServiceImpl tokenService;
+	@Autowired
+	ValidaClaimNameServiceImpl validaClaimNameService;
+	@Autowired
+	ValidaClaimSeedServiceImpl validaSeedService;
+	@Autowired
+	ValidaClaimRoleServiceImpl validaClaimRoleService;
+	
 	@PostMapping(value="/validate")
 	public boolean validate( @RequestBody Token token) {
 
-		TokenService tokenService = new TokenServiceImpl();
+		
 		ClaimDto claimDto = new ClaimDto();
-		ValidaClaimNameService validaClaimNameService = new ValidaClaimNameServiceImpl();
-		ValidaClaimSeedService validaSeedService = new ValidaClaimSeedServiceImpl();
-		ValidaClaimRoleService validaClaimRoleService = new ValidaClaimRoleServiceImpl();
 		
 		claimDto = tokenService.converteTokenJwtParaObjeto(tokenService.deserializaTokenJwt(token.getValue()));
 
