@@ -3,7 +3,16 @@ import org.springframework.web.bind.annotation.RequestBody ;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tokenvalidator.app.dtos.ClaimDto;
 import com.tokenvalidator.app.model.Token;
+import com.tokenvalidator.app.services.TokenService;
+import com.tokenvalidator.app.services.ValidaClaimNameService;
+import com.tokenvalidator.app.services.ValidaClaimRoleService;
+import com.tokenvalidator.app.services.ValidaClaimSeedService;
+import com.tokenvalidator.app.services.impl.TokenServiceImpl;
+import com.tokenvalidator.app.services.impl.ValidaClaimNameServiceImpl;
+import com.tokenvalidator.app.services.impl.ValidaClaimRoleServiceImpl;
+import com.tokenvalidator.app.services.impl.ValidaClaimSeedServiceImpl;
 
 @RestController
 public class TokenController {
@@ -11,14 +20,51 @@ public class TokenController {
 	@PostMapping(value="/validate")
 	public boolean validate( @RequestBody Token token) {
 
-		// altere esse metodo para atender as regras de definidas no readme.
-		// você pode modificar o tipo de retorno, importar outros pacotes, criar mais classes.
-		// existe uma pasta chamada Model para gerenciar o objeto Token
+		TokenService tokenService = new TokenServiceImpl();
+		ClaimDto claimDto = new ClaimDto();
+		ValidaClaimNameService validaClaimNameService = new ValidaClaimNameServiceImpl();
+		ValidaClaimSeedService validaSeedService = new ValidaClaimSeedServiceImpl();
+		ValidaClaimRoleService validaClaimRoleService = new ValidaClaimRoleServiceImpl();
+		
+		claimDto = tokenService.converteTokenJwtParaObjeto(tokenService.deserializaTokenJwt(token.getValue()));
 
-		// Imprimindo o input recebido
-		//System.out.println(token.getValue());
+		System.out.println("Role: " + claimDto.getRole());
+		System.out.println("Seed: " + claimDto.getSeed());
+		System.out.println("Name: " + claimDto.getName());
 
-		return false;
+		String validaQuantidadeAtributosStatus = "";
+		String validaTamanhoNameStatus = "";
+		String validaApenasLetrasStatus = "";
+		String validaNumeroPrimoStatus = "";
+		String validaRoleStatus = "";
+
+		if (claimDto.getName() != null) {
+
+			validaQuantidadeAtributosStatus = tokenService.validaQuantidadeAtributos(token.getValue());
+			validaTamanhoNameStatus = validaClaimNameService.validaTamanho(claimDto.getName());
+			validaApenasLetrasStatus = validaClaimNameService.possuiApenasLetras(claimDto.getName());
+			validaNumeroPrimoStatus = validaSeedService.validaNumeroPrimo(claimDto.getSeed());
+			validaRoleStatus = validaClaimRoleService.validaRole(claimDto.getRole());
+			
+		} else {
+			System.out.println("false");
+			return false;
+		}
+				
+		if (validaQuantidadeAtributosStatus == "NOK"
+			|| validaTamanhoNameStatus == "NOK"
+			|| validaApenasLetrasStatus == "NOK"
+			|| validaNumeroPrimoStatus == "NOK"
+			|| validaRoleStatus == "NOK") 
+		{
+			System.out.println("false");
+			return false;
+			
+		} else {
+			System.out.println("true");
+			return true;
+		}
+
 	}
 }
 

@@ -5,7 +5,7 @@ import com.tokenvalidator.app.services.ValidaClaimSeedService;
 public class ValidaClaimSeedServiceImpl implements ValidaClaimSeedService {
 
 	@Override
-	public boolean validaNumeroPrimo(String seed) {
+	public String validaNumeroPrimo(String seed) {
         
         int numPrimo;
         int numDivisores = 0;
@@ -23,11 +23,11 @@ public class ValidaClaimSeedServiceImpl implements ValidaClaimSeedService {
         
         if (numDivisores == 2){
             System.out.println("é um número primo!");
-    		return true;
+    		return "OK";
         }
             
         System.out.println("Não é num número primo!");
-		return false;
+		return "NOK";
 	}
 
 	
