@@ -1,9 +1,23 @@
+# Backend Challenge Main 
 
-### Documentação
+# Sobre o projeto
+Este projeto tem como base conceitos de implementação de interfaces, injeção de dependência, separação de responsabilidades.
+Para realização do desafio foram implementados os métodos: Valida Número Primo, Valida Role, Valida Name possuindo Apenas Letras, Valida Tamanho Name, Valida Quantidade de Atributos, Deserializa Token Jwt, Converte Token Jwt Para Objeto.
 
-- Projeto Spring Boot
 
-- Informações referentes a solução: Utilizados os conceitos de implementação de interfaces, injeção de dependência, separação de responsabilidades.
+# Tecnologias utilizadas
+- Java
+- Spring Boot
+- Maven
 
-- Foram implementados os seguintes métodos: 
-Valida Numero Primo, Valida Role, Valida Name possuindo Apenas Letras, Valida Tamanho Name, Valida QuantidadeAtributos, Deserializa TokenJwt, Converte TokenJwtParaObjeto.
+
+## Back end
+Pré-requisitos: Java 17
+
+
+
+# Autor
+
+Daniel Lopes
+
+linkedin.com/in/daniel-l-84576a104
